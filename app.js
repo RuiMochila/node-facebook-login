@@ -26,6 +26,9 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
       
+      //usar o accessToken e fazer um GET request a graph/100000981084408/friends?fields=username,name
+      //para ter a lista de amigos com id, displayName e username
+
       // The user's Facebook profile is returned to
       // represent the logged-in user.
       userProfile = profile;
@@ -55,7 +58,7 @@ app.configure(function() {
 });
 
 
-app.get('/', function(req, res){
+app.get('/', ensureAuthenticated, function(req, res){
   console.log(req.user);
   //console.log("Profile: "+ JSON.stringify(userProfile));
   res.render('index', { user: req.user, pic: "https://graph.facebook.com/"+req.user.username+"/picture" });

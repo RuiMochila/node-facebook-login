@@ -6,3 +6,14 @@
 	<!-- a pic entra no render -->
 	<img src=<%= pic %> />
 <% } %>
+
+
+<script>
+	//pedido da lista de amigos
+	var url = "/"+user.id+"/friends?fields=username,name";
+	FB.api(url, function(response) {
+  		//do comething with response
+  		//a resposta vem no formato que tu viste no fb. 
+  		//Agora... n sei onde meter este scrip nem como o chamar xD
+	});
+</script>
